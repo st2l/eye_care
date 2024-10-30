@@ -4,6 +4,7 @@ from win10toast import ToastNotifier
 
 scheduler = BackgroundScheduler()
 
+
 def notify():
     ToastNotifier().show_toast(
         title="EYES NEED REST U, BASTARD!",
@@ -11,6 +12,7 @@ def notify():
         duration=120,
         threaded=True
     )
+
 
 def main(page: ft.Page):
 
@@ -20,7 +22,8 @@ def main(page: ft.Page):
         except Exception as e:
             pass
         scheduler.remove_all_jobs()  # clear all jobs
-        scheduler.add_job(notify, trigger='interval', minutes=int(txt_number.value))
+        scheduler.add_job(notify, trigger='interval',
+                          minutes=int(txt_number.value))
         scheduler.start()
 
     page.title = "Eye care"
@@ -89,7 +92,7 @@ def main(page: ft.Page):
             alignment=ft.MainAxisAlignment.START,
         )
     )
- 
+
 
 if __name__ == "__main__":
     ft.app(main)
